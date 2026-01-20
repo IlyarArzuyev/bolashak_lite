@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Приём заявок</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <style>
+ <style>
         * {
             box-sizing: border-box;
         }
@@ -23,8 +23,7 @@
             height: 100vh;
             max-width: 480px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
+            position: relative; /* Важно для позиционирования экранов */
         }
 
         header {
@@ -40,7 +39,9 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 480px;
-            z-index: 50;
+            z-index: 100;
+            height: 72px;
+            box-sizing: border-box;
         }
 
         header h1 {
@@ -53,14 +54,20 @@
             opacity: 0.8;
         }
 
-        /* ЭКРАНЫ */
+        /* ЭКРАНЫ - ПОЛНОРАЗМЕРНЫЕ */
         .screen {
             display: none;
-            flex: 1;
+            position: fixed;
+            top: 72px; /* Высота header */
+            bottom: 90px; /* Высота bottom-bar */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
             overflow-y: auto;
-            padding: 12px 12px 12px;
-            margin-top: 72px;
-            margin-bottom: 90px;
+            padding: 12px;
+            background: #f3f4f6;
+            z-index: 1;
         }
 
         .screen.active {
@@ -70,6 +77,21 @@
         /* Главная страница */
         #home-screen {
             display: block;
+        }
+
+        /* Убираем старые отступы у main */
+        main {
+            position: fixed;
+            top: 72px;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            overflow-y: auto;
+            padding: 12px;
+            background: #f3f4f6;
+            z-index: 1;
         }
 
         .section {
@@ -487,6 +509,7 @@
             border-radius: 16px;
             padding: 16px;
             text-align: center;
+            margin-top: 12px;
         }
 
         .shop-icon {
@@ -505,9 +528,11 @@
             background: #fff;
             border-top: 1px solid #e5e7eb;
             padding: 8px 12px;
-            z-index: 50;
+            z-index: 100;
             display: flex;
             justify-content: space-around;
+            height: 90px;
+            box-sizing: border-box;
         }
 
         .nav-btn {
@@ -564,6 +589,7 @@
         }
 
     </style>
+
 </head>
 <body>
 <div class="app">
